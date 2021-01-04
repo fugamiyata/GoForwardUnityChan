@@ -12,12 +12,14 @@ public class CubeController : MonoBehaviour
     //消滅位置
     private float deadLine = -10f;
 
-    private float vol = 0.8f;
+    private AudioSource audioSource;
+
+   
 
 
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,11 +35,16 @@ public class CubeController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject)
+        if (collision.gameObject.tag == "blockSE")
         {
-            GetComponent<AudioSource>().volume = vol;
+            audioSource.Play();
         }
+     
+
+
     }
+
+
 }
